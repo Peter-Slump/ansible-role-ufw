@@ -1,0 +1,6 @@
+---
+
+- name: Reload UFW
+  service:
+    name: ufw
+    state: reloaded

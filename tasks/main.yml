@@ -1,0 +1,22 @@
+---
+
+- name: Make sure the latest UFW is installed
+  apt:
+    name: ufw
+    state: latest
+
+- name: Allow SSH
+  ufw:
+    rule: allow
+    to_port: "{{ ufw_ssh_port }}"
+
+- name: Allow Localhost
+  ufw:
+    rule: allow
+    src: 127.0.0.1
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+    policy: reject
+    logging: on
