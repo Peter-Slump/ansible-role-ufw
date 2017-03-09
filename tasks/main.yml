@@ -4,19 +4,27 @@
   apt:
     name: ufw
     state: latest
+  tags:
+    - ufw
 
 - name: Allow SSH
   ufw:
     rule: allow
     to_port: "{{ ufw_ssh_port }}"
+  tags:
+    - ufw
 
 - name: Allow Localhost
   ufw:
     rule: allow
     src: 127.0.0.1
+  tags:
+    - ufw
 
 - name: Enable UFW
   ufw:
     state: enabled
     policy: reject
     logging: on
+  tags:
+    - ufw
